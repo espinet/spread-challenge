@@ -1,0 +1,47 @@
+require_relative '../lib/bond_collection'
+
+describe BondCollection do
+  before do
+    records = [
+      { bond: 'C1', type: 'corporate', term: 3759.5, yield: 0.053 },
+      { bond: 'G1', type: 'government', term: 3431, yield: 0.037 },
+      { bond: 'G2', type: 'government', term: 4380, yield: 0.048 },
+      { bond: 'G3', type: 'government', term: 5949.5, yield: 0.055 }
+    ]
+
+    @collection = BondCollection.new(records)
+  end
+
+  describe '#new' do
+    it 'contains five records' do
+      expect(@collection.count).to equal(4)
+    end
+
+    it 'is sorted ascending by term' do
+      bonds = @collection.map { |bond| bond.bond }
+      expect(bonds).to match_array(%w(G1 C1 G2 G3))
+    end
+  end
+
+  describe '.add' do
+    let(:bond) { { bond: 'C2', type: 'corporate', term: 5548, yield: 0.083 } }
+
+    it 'returns a new collection' do
+      new_collection = @collection.add(bond)
+
+      expect(new_collection.is_a?(BondCollection)).to be true
+      expect(new_collection).not_to equal(@collection)
+    end
+
+    it 'adds the new bond to the correct index' do
+      new_collection = @collection.add(bond)
+
+      bonds = new_collection.map { |bond| bond.bond }
+
+      expect(new_collection.bonds[3].bond).to equal(bond)
+    end
+  end
+
+  describe '.filter' do
+  end
+end

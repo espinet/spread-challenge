@@ -1,16 +1,16 @@
 require_relative '../lib/spread_calculator'
+require_relative '../lib/bond_collection'
 
 describe SpreadCalculator do
   describe '.to_benchmark' do
     before do
-      @corporate_bond = [
-        { bond: 'C1', type: 'corporate', term: 3759.5, yield: 0.053 },
-      ]
+      @corporate_bond = Bond.new({ bond: 'C1', type: 'corporate', term: 3759.5, yield: 0.053 })
 
-      @government_bonds = [
+      records = [
         { bond: 'G1', type: 'government', term: 3431, yield: 0.037 },
         { bond: 'G2', type: 'government', term: 4380, yield: 0.048 }
       ]
+      @government_bonds = BondCollection.new(records)
     end
 
     it 'returns the correct spread' do
@@ -24,15 +24,14 @@ describe SpreadCalculator do
 
   describe '.to_curve' do
     before do
-      @corporate_bond = [
-        { bond: 'C1', type: 'corporate', term: 3759.5, yield: 0.053 },
-      ]
+      @corporate_bond = Bond.new({ bond: 'C1', type: 'corporate', term: 3759.5, yield: 0.053 })
 
-      @government_bonds = [
+      records = [
         { bond: 'G1', type: 'government', term: 3431, yield: 0.037 },
         { bond: 'G2', type: 'government', term: 4380, yield: 0.048 },
         { bond: 'G3', type: 'government', term: 5949.5, yield: 0.055 }
       ]
+      @government_bonds = BondCollection.new(records)
     end
 
     it 'returns the correct spread' do
