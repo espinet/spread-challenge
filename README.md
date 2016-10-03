@@ -1,4 +1,4 @@
-File documentation can be found in /doc/table_of_contents.html
+Class documentation can be found in /doc/table_of_contents.html
 
 # Instructions
 
