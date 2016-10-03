@@ -17,11 +17,11 @@ describe Formatter do
     let(:hash) { { spread_to_benchmark: 0.015, spread_to_curve: 0.022 } }
 
     it 'formats yield to be a % as X% for benchmark' do
-      expect(Formatter.prettify(hash)[:spread_to_benchmark]).to match('1.50%')
+      expect(Formatter.prettify(hash, :spread_to_benchmark)[:spread_to_benchmark]).to match('1.50%')
     end
 
     it 'formats yield to be a % as X% for curve' do
-      expect(Formatter.prettify(hash)[:spread_to_curve]).to match('2.20%')
+      expect(Formatter.prettify(hash, :spread_to_curve)[:spread_to_curve]).to match('2.20%')
     end
   end
 end

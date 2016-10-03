@@ -1,3 +1,4 @@
+# An enumerable and immutable class for managing Bonds.
 class BondCollection
   include Enumerable
 
@@ -17,10 +18,30 @@ class BondCollection
     @bonds.freeze
   end
 
+  # Creates a new BondCollection with the old records and new records in sorted order by term.
+  #
+  # ==== Attributes
+  #
+  # +records+ - Can be a Bond or a hash which has the valid key value pairs to become a Bond. This
+  # can also be a single object or an array.
+  #
+  # ==== Examples
+  #
+  #   BondCollection.new.add([{...}, ...]) #=> BondCollection
   def add(records)
     BondCollection.new(@bonds.dup.push(records))
   end
 
+  # Returns a new BondCollection matching the attributes specified in the arguments.
+  #
+  # ==== Attributes
+  #
+  # +hash+ - An individual key value pair that can be found in a Bond's attributes. Valid keys are
+  # bond, type, term, yield.
+  #
+  # ==== Examples
+  #
+  #   BondCollection.new.filter({ type: 'government' }) #=> BondCollection
   def filter(attributes)
     raise ArgumentError.new('only one attribute can be filtered at a time') if attributes.keys.count > 1
 
@@ -28,14 +49,17 @@ class BondCollection
     BondCollection.new(filtered)
   end
 
+  # Return a bond at the provided index.
   def [](index)
     @bonds[index]
   end
 
+  # Returns the index of a bond in a collection.
   def index(bond)
     @bonds.index(bond)
   end
 
+  # Returns the number of bonds in a collection.
   def count
     @bonds.count
   end

@@ -1,0 +1,21 @@
+Sun, 02 Oct 2016 23:31:04 -0400
+./challenge1_sample.csv	Sun, 02 Oct 2016 22:15:22 -0400
+./challenge2_sample.csv	Sun, 02 Oct 2016 22:15:38 -0400
+./Gemfile	Sun, 02 Oct 2016 22:54:30 -0400
+./Gemfile.lock	Sun, 02 Oct 2016 22:54:33 -0400
+./lib/bond.rb	Sun, 02 Oct 2016 23:07:26 -0400
+./lib/bond_collection.rb	Sun, 02 Oct 2016 23:30:23 -0400
+./lib/formatter.rb	Sun, 02 Oct 2016 23:06:27 -0400
+./lib/linear_interpolator.rb	Sun, 02 Oct 2016 23:23:33 -0400
+./lib/spread_calculator.rb	Sun, 02 Oct 2016 23:31:03 -0400
+./README.md	Sun, 02 Oct 2016 22:05:24 -0400
+./sample_input.csv	Sun, 02 Oct 2016 19:26:00 -0400
+./spec/bond_collection_spec.rb	Sun, 02 Oct 2016 19:15:04 -0400
+./spec/bond_spec.rb	Sun, 02 Oct 2016 16:37:19 -0400
+./spec/formatter_spec.rb	Sun, 02 Oct 2016 23:03:23 -0400
+./spec/linear_interpolator_spec.rb	Sun, 02 Oct 2016 21:48:45 -0400
+./spec/spec_helper.rb	Sun, 02 Oct 2016 15:11:56 -0400
+./spec/spread_calculator_spec.rb	Sun, 02 Oct 2016 21:48:14 -0400
+./spread_challenge.rb	Sun, 02 Oct 2016 23:05:35 -0400
+./spread_to_benchmark.csv	Sun, 02 Oct 2016 22:16:10 -0400
+./spread_to_curve.csv	Sun, 02 Oct 2016 22:16:10 -0400

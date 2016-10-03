@@ -1,4 +1,16 @@
+# A collection of spread calculation methods to compare corporate bonds and government bonds.
 class SpreadCalculator
+  # Used to calculate the spread_to_benchmark between a bond and a collection of candidate bonds.
+  # 
+  # ==== Attributes
+  #
+  # +bond+ - A Bond to compare against the best candidate in the candidate collection.
+  #
+  # +bond_collection+ - A BondCollection that contains a candidate for comparison.
+  #
+  # ==== Examples
+  #
+  #   SpreadCalculator.to_benchmark(Bond.new, BondCollection.new) #=> { bond: 'C1', benchmark: 'G1', spread_to_benchmark: 0.0122 }
   def self.to_benchmark(bond, bond_collection)
     _candidates = candidates(bond, bond_collection)
     candidate = closest_candidate(bond, _candidates)
@@ -6,6 +18,17 @@ class SpreadCalculator
     { bond: bond.bond, benchmark: candidate.bond, spread_to_benchmark: bond.yield - candidate.yield }
   end
 
+  # Used to calculate the spread_to_curve between a bond and a collection of candidate bonds.
+  # 
+  # ==== Attributes
+  #
+  # +bond+ - A Bond to compare against the best candidate in the candidate collection.
+  # 
+  # +bond_collection+ - A BondCollection that contains a candidate for comparison.
+  #
+  # ==== Examples
+  #
+  #   SpreadCalculator.to_curve(Bond.new, BondCollection.new) #=> { bond: 'C1', spread_to_curve: 0.0122 }
   def self.to_curve(bond, bond_collection)
     _candidates = candidates(bond, bond_collection)
     candidate = pseudo_candidate(bond.term, *_candidates)

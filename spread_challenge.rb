@@ -27,7 +27,7 @@ if spread_to_benchmark.any?
     csv << spread_to_benchmark[0].keys
 
     spread_to_benchmark.each do |spread|
-      csv << Formatter.prettify(spread).values
+      csv << Formatter.prettify(spread, :spread_to_benchmark).values
     end
   end
 end
@@ -37,7 +37,7 @@ if spread_to_curve.any?
     csv << spread_to_curve[0].keys
 
     spread_to_curve.each do |spread|
-      csv << Formatter.prettify(spread).values
+      csv << Formatter.prettify(spread, :spread_to_curve).values
     end
   end
 end
