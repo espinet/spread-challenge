@@ -33,5 +33,8 @@ Once all the calculations are performed for both spread types, the Formatter is 
 
 This implementation is very specific to calculating everything in memory. In a client/server environment, using indexes and querying data would be more appropriate depending on the size of the dataset, how much memory is available on the server, and how many spread calculations need to be performed at once. If the dataset in this example was extremely large, an immutable data structure could raise could cause some issues.
 
-If I had more time and more details about different edge cases for calculations, I'd right a more robust testing suite. Having a strong integration tests for SpreadCalculator would help cover most of the script. Also, the Formatter class is very specific to the requirements of this challenge. It could probably be refactored to be a bit more extensible.
+If I had more time and more details about different edge cases for calculations, I'd right a more robust testing suite. Having a strong integration tests for SpreadCalculator would help cover most of the script. 
 
+The Formatter class is very specific to the requirements of this challenge. It could probably be refactored to be a bit more extensible.
+
+Using the ruby sort in BondCollection when adding a Bond to the collection could be improved. In large datasets sorting an already sorted array could take unnecessary time when all we need to do is find the correct location for the new added record.
