@@ -1,3 +1,5 @@
+File documentation can be found in /doc/table_of_contents.html
+
 # Instructions
 
 1. Install Bundler using ```gem install bundler```
