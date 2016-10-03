@@ -44,6 +44,24 @@ describe BondCollection do
       it 'returns a collection with three bonds' do
         expect(@collection.filter(type: 'government').count).to equal(3)
       end
+
+      it 'keeps the bond in sorted order' do
+        government_bonds = @collection.filter(type: 'government').map(&:bond)
+        expect(government_bonds).to match_array(%w(G1 G2 G3))
+      end
+    end
+  end
+
+  describe '[]' do
+    it 'returns the element at the specified index' do
+      expect(@collection[1].bond).to match('C1')
+    end
+  end
+
+  describe '.index' do
+    it 'returns the index of the provided object' do
+      object = @collection[2]
+      expect(@collection.index(object)).to equal(2)
     end
   end
 end

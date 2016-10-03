@@ -12,19 +12,28 @@ class BondCollection
       else
         raise ArgumentError.new('requires raw bond data or a Bond')
       end
-    end.sort
+    end.uniq.sort
+
+    @bonds.freeze
   end
 
   def add(records)
-    BondCollection.new(@bonds.push(records))
+    BondCollection.new(@bonds.dup.push(records))
   end
 
-  # This method could be expanded so the query could be a lot more flexible if needed.
   def filter(attributes)
     raise ArgumentError.new('only one attribute can be filtered at a time') if attributes.keys.count > 1
 
     filtered = @bonds.select { |bond| bond.send(attributes.keys[0]) == attributes.values[0] }
     BondCollection.new(filtered)
+  end
+
+  def [](index)
+    @bonds[index]
+  end
+
+  def index(bond)
+    @bonds.index(bond)
   end
 
   def count

@@ -1,5 +1,6 @@
 require_relative '../lib/spread_calculator'
 require_relative '../lib/bond_collection'
+require_relative '../lib/linear_interpolator'
 
 describe SpreadCalculator do
   describe '.to_benchmark' do
@@ -14,10 +15,10 @@ describe SpreadCalculator do
     end
 
     it 'returns the correct spread' do
-      benchmark = SpreadCalculator.to_benchmark(@corporate_bond, @goverment_bonds)
+      benchmark = SpreadCalculator.to_benchmark(@corporate_bond, @government_bonds)
 
-      expect(benchmark[:bond]).to equal('C1')
-      expect(benchmark[:benchmark]).to equal('G1')
+      expect(benchmark[:bond]).to match('C1')
+      expect(benchmark[:benchmark]).to match('G1')
       expect(benchmark[:spread_to_benchmark]).to equal(0.016)
     end
   end
@@ -35,10 +36,10 @@ describe SpreadCalculator do
     end
 
     it 'returns the correct spread' do
-      benchmark = SpreadCalculator.to_curve(@corporate_bond, @goverment_bonds)
+      benchmark = SpreadCalculator.to_curve(@corporate_bond, @government_bonds)
 
-      expect(benchmark[:bond]).to equal('C1')
-      expect(benchmark[:spread_to_curve]).to equal(0.0122)
+      expect(benchmark[:bond]).to match('C1')
+      expect(benchmark[:spread_to_curve]).to be_within(0.000009).of(0.0122)
     end
   end
 end
